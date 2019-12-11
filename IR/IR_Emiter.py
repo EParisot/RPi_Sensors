@@ -2,10 +2,9 @@ import RPi.GPIO as GPIO
 import time
 
 IrPin  = 23
-count = 0
 
 def setup():
-    GPIO.setmode(GPIO.BCM)       # Numbers GPIOs by physical location
+    GPIO.setmode(GPIO.BCM)
     GPIO.setup(IrPin, GPIO.OUT)
 
 def loop():

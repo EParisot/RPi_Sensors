@@ -1,19 +1,16 @@
 import RPi.GPIO as GPIO
 
 IrPin  = 14
-count = 0
 
 def setup():
-    GPIO.setmode(GPIO.BCM)       # Numbers GPIOs by physical location
+    GPIO.setmode(GPIO.BCM)
     GPIO.setup(IrPin, GPIO.IN, pull_up_down=GPIO.PUD_UP)
 
-def cnt(ev=None):
-    global count
-    count += 1
-    print('Received infrared. cnt = ', count)
+def callback(ev=None):
+    print('Received infrared.')
 
 def loop():
-    GPIO.add_event_detect(IrPin, GPIO.FALLING, callback=cnt) # wait for falling
+    GPIO.add_event_detect(IrPin, GPIO.FALLING, callback=callback) # wait for falling
     while True:
         pass   # Don't do anything
 
